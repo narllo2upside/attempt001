@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "chiikawa-mbti",
+    "title": "치이카와 MBTI 테스트",
+    "desc": "12개 질문으로 나와 닮은 치이카와 친구를 찾아요.",
+    "category": "mbti",
+    "emoji": "🍙",
+    "tint": "#FFD6E3",
+    "thumb": "/test/chiikawa-mbti/thumb.png",
+    "meta": "12문항, 약 2분",
+    "isNew": true,
+    "rank": 1
+  },
+  {
+    "slug": "today-tarot",
+    "title": "오늘의 타로",
+    "desc": "카드 한 장으로 보는 오늘 하루의 흐름.",
+    "category": "fortune",
+    "emoji": "🔮",
+    "tint": "#D9D2F5",
+    "thumb": "/test/today-tarot/thumb.png",
+    "meta": "카드 1장, 30초",
+    "isNew": true,
+    "rank": 2
+  }
+]

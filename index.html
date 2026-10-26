@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>말랑테스트 | 무료 성격 테스트·MBTI·오늘의 타로</title>
+<meta name="description" content="회원가입 없이 바로 결과를 보는 무료 심리 테스트 모음. 캐릭터 MBTI 테스트와 오늘의 타로를 즐겨보세요.">
+<link rel="canonical" href="https://YOUR-DOMAIN.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="말랑테스트 | 무료 성격 테스트·오늘의 타로">
+<meta property="og:description" content="회원가입 없이 바로 결과를 보는 무료 심리 테스트 모음.">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<!-- AdSense 사이트 소유 확인용: 승인 신청 시 주석 해제 후 pub ID 입력 -->
+<!-- <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/js/config.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main-content" class="wrap">
+  <section class="hero">
+    <h1>심심할 때 하나씩,<br>말랑한 테스트</h1>
+    <p>회원가입 없이 바로 결과를 볼 수 있어요.</p>
+  </section>
+
+  <nav class="chips" id="cat-chips" aria-label="카테고리"></nav>
+
+  <div data-ad="home_top"></div>
+
+  <section>
+    <h2 class="section-title" id="list-title">전체 테스트</h2>
+    <div class="card-grid" id="test-grid"></div>
+  </section>
+
+  <div data-ad="home_bottom"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/ads.js"></script>
+<script src="/assets/js/common.js"></script>
+<script>
+  (function () {
+    var cats = window.SITE_CONFIG.categories;
+    var cur = new URLSearchParams(location.search).get('cat') || 'all';
+    if (!cats.some(function (c) { return c.key === cur; })) cur = 'all';
+
+    // 카테고리 칩은 <a> 링크 → 누를 때마다 실제 페이지 이동(비네트 광고 기회)
+    document.getElementById('cat-chips').innerHTML = cats.map(function (c) {
+      var href = c.key === 'all' ? '/' : '/?cat=' + c.key;
+      return '<a class="chip" href="' + href + '"' + (c.key === cur ? ' aria-current="page"' : '') + '>' + Site.esc(c.label) + '</a>';
+    }).join('');
+
+    var label = cats.filter(function (c) { return c.key === cur; })[0].label;
+    document.getElementById('list-title').textContent = cur === 'all' ? '전체 테스트' : label + ' 테스트';
+
+    Site.renderGrid(document.getElementById('test-grid'), { category: cur, infeedAfter: 6, infeedSlot: 'home_infeed' });
+  })();
+</script>
+</body>
+</html>

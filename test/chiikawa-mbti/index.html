@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치이카와 MBTI 테스트 - 나와 닮은 캐릭터 찾기 | 말랑테스트</title>
+<meta name="description" content="12개의 A/B 질문으로 16가지 성향 중 나와 닮은 치이카와 친구를 찾아보는 재미용 테스트예요.">
+<link rel="canonical" href="https://YOUR-DOMAIN.com/test/chiikawa-mbti/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="치이카와 MBTI 테스트 | 말랑테스트">
+<meta property="og:description" content="12개 질문으로 나와 닮은 치이카와 친구를 찾아요.">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/test/chiikawa-mbti/thumb.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/js/config.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+
+<main id="main-content" class="wrap">
+  <p class="crumb"><a href="/">홈</a> / <a href="/?cat=mbti">성격·MBTI</a></p>
+
+  <section class="test-head">
+    <h1>치이카와 MBTI 테스트</h1>
+    <p>12개 질문에 답하면 16가지 성향 중 하나로, 나와 닮은 치이카와 친구를 알려드려요.</p>
+  </section>
+
+  <div class="cover" style="--tint:#FFD6E3">
+    <span aria-hidden="true">🍙</span>
+    <img src="/test/chiikawa-mbti/cover.png" alt="" onerror="this.remove()">
+  </div>
+
+  <div data-ad="test_top"></div>
+
+  <section class="quiz" id="quiz" aria-live="polite"></section>
+
+  <div data-ad="test_mid"></div>
+
+  <!-- 아래 본문은 검색 유입과 AdSense 심사(‘가치 있는 콘텐츠’)를 위한 고정 텍스트입니다. -->
+  <article class="article">
+    <h2>어떤 방식으로 계산하나요?</h2>
+    <p>질문은 E/I, S/N, T/F, J/P 네 가지 축을 3개씩 확인해요. 축마다 A를 2개 이상 고르면 앞 글자, 1개 이하면 뒤 글자로 정해지고, 네 글자를 합친 유형에 맞는 캐릭터가 결과로 나와요.</p>
+    <p>같은 캐릭터라도 유형에 따라 다른 별명과 설명으로 연결돼요.</p>
+
+    <h2>자주 묻는 질문</h2>
+    <div class="faq">
+      <details><summary>공식 MBTI 검사인가요?</summary><p>아니에요. 캐릭터와 성향을 연결한 재미용 테스트이며, 공식 MBTI 검사를 대체하지 않아요.</p></details>
+      <details><summary>몇 문항인가요?</summary><p>모두 12문항이고 2분 정도면 끝나요.</p></details>
+      <details><summary>결과를 친구에게 보낼 수 있나요?</summary><p>결과 화면의 ‘결과 공유하기’를 누르면 내 결과 링크를 보내거나 복사할 수 있어요.</p></details>
+      <details><summary>원작에 나오는 공식 설정인가요?</summary><p>아니에요. 유형별 캐릭터 연결과 별명은 이 사이트의 비공식 해석이에요.</p></details>
+    </div>
+    <p class="note">치이카와 캐릭터의 저작권은 원저작자에게 있으며, 이 테스트는 비공식 팬 콘텐츠입니다.</p>
+  </article>
+
+  <h2 class="section-title">같이 해보면 좋은 테스트</h2>
+  <div class="card-grid" id="related"></div>
+
+  <div data-ad="test_bottom"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/ads.js"></script>
+<script src="/assets/js/common.js"></script>
+<script src="/test/chiikawa-mbti/data.js"></script>
+<script src="/assets/js/mbti-engine.js"></script>
+<script>
+  MbtiTest.mountQuiz();
+  Site.renderRelated(TEST_DATA.slug);
+</script>
+</body>
+</html>
