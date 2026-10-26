@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
-<script src="/assets/js/config.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/config.js"></script>
 </head>
 <body>
 <div id="site-header"></div>
@@ -42,8 +42,8 @@
 
 <div id="site-footer"></div>
 
-<script src="/assets/js/ads.js"></script>
-<script src="/assets/js/common.js"></script>
+<script src="assets/js/ads.js"></script>
+<script src="assets/js/common.js"></script>
 <script>
   (function () {
     var cats = window.SITE_CONFIG.categories;
@@ -52,7 +52,7 @@
 
     // 카테고리 칩은 <a> 링크 → 누를 때마다 실제 페이지 이동(비네트 광고 기회)
     document.getElementById('cat-chips').innerHTML = cats.map(function (c) {
-      var href = c.key === 'all' ? '/' : '/?cat=' + c.key;
+      var href = c.key === 'all' ? Site.url('') : Site.url('?cat=' + c.key);
       return '<a class="chip" href="' + href + '"' + (c.key === cur ? ' aria-current="page"' : '') + '>' + Site.esc(c.label) + '</a>';
     }).join('');
 

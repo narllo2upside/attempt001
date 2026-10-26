@@ -77,7 +77,7 @@
   }
 
   function figureHTML(type, r) {
-    var src = (D.imageBase || './images/') + type + '.png';
+    var src = window.Site.url((D.imageBase || 'test/' + D.slug + '/images/') + type + '.png');
     return '<div class="result-figure">' +
       '<span>' + esc(r.character) + ' 이미지 자리<br>(' + esc(src) + ')</span>' +
       '<img src="' + esc(src) + '" alt="' + esc(r.character + ' - ' + r.nickname) + '" onerror="this.remove()">' +

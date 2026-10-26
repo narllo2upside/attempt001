@@ -11,15 +11,18 @@
     });
   }
 
+  // 사이트 내부 경로 → 실제 주소 (하위 폴더 배포 대응)
+  function url(p) { return window.SITE_BASE + String(p || '').replace(/^\//, ''); }
+
   function header() {
     var el = document.getElementById('site-header');
     if (!el) return;
     var nav = C.categories.filter(function (c) { return c.key !== 'all'; })
-      .map(function (c) { return '<a href="/?cat=' + c.key + '">' + esc(c.label) + '</a>'; }).join('');
+      .map(function (c) { return '<a href="' + url('?cat=' + c.key) + '">' + esc(c.label) + '</a>'; }).join('');
     el.innerHTML =
       '<a class="skip" href="#main-content">본문 바로가기</a>' +
       '<header class="site-header"><div class="site-header__in">' +
-      '<a class="logo" href="/">' + esc(C.siteName) + '</a>' +
+      '<a class="logo" href="' + url('') + '">' + esc(C.siteName) + '</a>' +
       '<nav class="site-nav" aria-label="카테고리">' + nav + '</nav>' +
       '</div></header>';
   }
@@ -29,7 +32,7 @@
     if (!el) return;
     el.innerHTML =
       '<footer class="site-footer"><div class="wrap">' +
-      '<p class="site-footer__links"><a href="/privacy/">개인정보처리방침</a><a href="mailto:' + esc(C.contactEmail) + '">제휴·문의</a></p>' +
+      '<p class="site-footer__links"><a href="' + url('privacy/') + '">개인정보처리방침</a><a href="mailto:' + esc(C.contactEmail) + '">제휴·문의</a></p>' +
       '<p class="site-footer__small">캐릭터·작품을 소재로 한 테스트는 비공식 팬 콘텐츠이며, 각 저작권은 원저작자에게 있습니다.</p>' +
       '<p class="site-footer__small">© ' + new Date().getFullYear() + ' ' + esc(C.siteName) + '</p>' +
       '</div></footer>';
@@ -38,14 +41,14 @@
   var cache = null;
   function loadTests() {
     if (cache) return Promise.resolve(cache);
-    return fetch('/data/tests.json', { cache: 'no-cache' })
+    return fetch(url('data/tests.json'), { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(function (list) { cache = list; return list; });
   }
 
   function cardHTML(t) {
-    var img = t.thumb ? '<img src="' + esc(t.thumb) + '" alt="" loading="lazy" onerror="this.remove()">' : '';
-    return '<a class="test-card" href="/test/' + esc(t.slug) + '/">' +
+    var img = t.thumb ? '<img src="' + esc(url(t.thumb)) + '" alt="" loading="lazy" onerror="this.remove()">' : '';
+    return '<a class="test-card" href="' + esc(url('test/' + t.slug + '/')) + '">' +
       '<div class="test-card__thumb" style="--tint:' + esc(t.tint || '#FFE07A') + '">' +
       '<span class="test-card__emoji" aria-hidden="true">' + esc(t.emoji || '✨') + '</span>' + img + '</div>' +
       '<div class="test-card__body">' +
@@ -66,7 +69,7 @@
       if (opts.limit) items = items.slice(0, opts.limit);
 
       if (!items.length) {
-        el.innerHTML = '<p class="empty">이 카테고리에는 아직 테스트가 없어요. <a href="/">전체 테스트 보기</a></p>';
+        el.innerHTML = '<p class="empty">이 카테고리에는 아직 테스트가 없어요. <a href="' + url('') + '">전체 테스트 보기</a></p>';
         return;
       }
       var html = '';
@@ -123,7 +126,7 @@
   });
 
   window.Site = {
-    esc: esc, loadTests: loadTests, renderGrid: renderGrid, renderRelated: renderRelated,
+    esc: esc, url: url, loadTests: loadTests, renderGrid: renderGrid, renderRelated: renderRelated,
     share: share, toast: toast, ymd: ymd
   };
 })();

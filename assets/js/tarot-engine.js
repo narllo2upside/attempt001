@@ -124,7 +124,7 @@
       '<p class="note" style="text-align:center;margin-top:14px">카드는 매일 자정에 새로 섞여요. 내일 다시 만나요.</p>' +
       '<div class="btn-row">' +
       '<button class="btn" id="share">카드 공유하기</button>' +
-      '<a class="btn btn--plain" href="/">다른 테스트 보기</a>' +
+      '<a class="btn btn--plain" href="' + window.Site.url('') + '">다른 테스트 보기</a>' +
       '</div>';
 
     detail.querySelector('#share').addEventListener('click', function () {

@@ -6,7 +6,7 @@
     "category": "mbti",
     "emoji": "🍙",
     "tint": "#FFD6E3",
-    "thumb": "/test/chiikawa-mbti/thumb.png",
+    "thumb": "test/chiikawa-mbti/thumb.png",
     "meta": "12문항, 약 2분",
     "isNew": true,
     "rank": 1
@@ -18,7 +18,7 @@
     "category": "fortune",
     "emoji": "🔮",
     "tint": "#D9D2F5",
-    "thumb": "/test/today-tarot/thumb.png",
+    "thumb": "test/today-tarot/thumb.png",
     "meta": "카드 1장, 30초",
     "isNew": true,
     "rank": 2

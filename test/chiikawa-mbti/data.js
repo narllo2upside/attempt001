@@ -7,7 +7,7 @@
 window.TEST_DATA = {
   slug: 'chiikawa-mbti',
   title: '치이카와 MBTI 테스트',
-  imageBase: '/test/chiikawa-mbti/images/',
+  imageBase: 'test/chiikawa-mbti/images/',
   axes: [['E', 'I'], ['S', 'N'], ['T', 'F'], ['J', 'P']],
 
   questions: [

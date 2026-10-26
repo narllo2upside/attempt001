@@ -1,7 +1,10 @@
 # 말랑테스트 — testmoa.com 구조를 본뜬 정적 테스트 사이트
 
-서버 없이 HTML/JS만으로 동작합니다. Cloudflare Pages, Netlify, GitHub Pages(커스텀 도메인) 등에 폴더째 올리면 됩니다.
-경로가 `/assets/...` 처럼 루트 기준이라 **도메인 루트에 배포**해야 합니다.
+서버 없이 HTML/JS만으로 동작합니다. Cloudflare Pages, Netlify, GitHub Pages 등에 폴더째 올리면 됩니다.
+모든 경로가 상대경로라 도메인 루트(`example.com/`)든 하위 폴더(`아이디.github.io/저장소명/`)든 그대로 동작합니다.
+
+GitHub Pages: 저장소 Settings → Pages → Source를 `Deploy from a branch`, 브랜치 `main`, 폴더 `/ (root)`로 지정.
+커밋 후 1~2분 뒤 반영되며, Actions 탭에서 배포 상태를 볼 수 있습니다.
 
 로컬 확인: 사이트 루트에서 `python3 -m http.server 8000` 후 http://localhost:8000
 (파일을 더블클릭해서 열면 tests.json을 못 읽습니다)
@@ -66,7 +69,8 @@ python3 tools/new_test.py cat-mbti "고양이 MBTI 테스트" --emoji 🐱 --des
 - “광고를 눌러 주세요” 같은 문구, 결과를 광고 클릭 뒤에 보여주는 구조는 금지입니다.
 
 ## 남은 할 일
-- 모든 HTML의 `YOUR-DOMAIN.com`을 실제 도메인으로 교체
+- 모든 HTML·sitemap.xml·robots.txt의 `YOUR-DOMAIN.com`을 실제 주소로 교체 (공유 미리보기·검색용, 동작에는 영향 없음)
+- AdSense는 `github.io` 하위 폴더 주소로는 승인받을 수 없습니다. 수익화 전에 개인 도메인을 연결하세요 (ads.txt가 도메인 루트에 있어야 함)
 - 개인정보처리방침의 운영자 정보 채우기
 - 카카오톡 공유를 원하면 Kakao JavaScript SDK와 앱 키를 추가 (현재는 시스템 공유 + 링크 복사)
 - 결과별 OG 이미지(카톡 미리보기)를 원하면 결과를 유형별 정적 페이지로 생성하는 빌드 단계 추가

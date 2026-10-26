@@ -53,7 +53,7 @@ def main():
     items = json.loads(reg.read_text(encoding="utf-8"))
     items.append({
         "slug": a.slug, "title": a.title, "desc": a.desc, "category": a.category,
-        "emoji": a.emoji, "tint": a.tint, "thumb": f"/test/{a.slug}/thumb.png",
+        "emoji": a.emoji, "tint": a.tint, "thumb": f"test/{a.slug}/thumb.png",
         "meta": a.meta, "isNew": True, "rank": a.rank,
     })
     reg.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

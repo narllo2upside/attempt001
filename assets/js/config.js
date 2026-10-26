@@ -1,6 +1,13 @@
 /* =========================================================
  * 사이트 전역 설정 — 브랜드 / 카테고리 / 광고를 여기서만 바꿉니다.
  * ========================================================= */
+/* 사이트가 올라간 기준 주소를 자동으로 찾습니다.
+ * 예) https://아이디.github.io/attempt001/  처럼 하위 폴더에 배포해도 동작 */
+window.SITE_BASE = (function () {
+  var s = document.currentScript && document.currentScript.src;
+  return s ? s.replace(/assets\/js\/config\.js(\?.*)?$/, '') : '/';
+})();
+
 window.SITE_CONFIG = {
   siteName: '말랑테스트',
   siteUrl: 'https://YOUR-DOMAIN.com',
