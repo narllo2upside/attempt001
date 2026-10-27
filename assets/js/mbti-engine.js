@@ -24,7 +24,9 @@
   }
 
   function mountQuiz() {
-    var root = document.getElementById('quiz');
+    var host = document.getElementById('app') || document.getElementById('quiz');
+    host.innerHTML = '<div class="quiz"></div>';
+    var root = host.firstChild;
     var idx = 0;
     var answers = [];
     var total = D.questions.length;
@@ -78,8 +80,9 @@
 
   function figureHTML(type, r) {
     var src = window.Site.url((D.imageBase || 'test/' + D.slug + '/images/') + type + '.png');
-    return '<div class="result-figure">' +
-      '<span>' + esc(r.character) + ' 이미지 자리<br>(' + esc(src) + ')</span>' +
+    var fallback = D.noImage ? '<span class="result-figure__type">' + type + '</span>' :
+      '<span>' + esc(r.character) + ' 이미지 자리<br>(' + esc(src) + ')</span>';
+    return '<div class="result-figure">' + fallback +
       '<img src="' + esc(src) + '" alt="' + esc(r.character + ' - ' + r.nickname) + '" onerror="this.remove()">' +
       '</div>';
   }
@@ -104,7 +107,7 @@
       '<div class="result-card">' +
       '<span class="result-type">' + type + '</span>' +
       '<h1>' + esc(r.nickname) + '</h1>' +
-      '<p class="result-sub">나와 닮은 친구는 ' + esc(r.character) + '</p>' +
+      '<p class="result-sub">' + esc((D.subTpl || '나와 닮은 친구는 {c}').replace('{c}', r.character)) + '</p>' +
       figureHTML(type, r) +
       '<p class="result-summary">' + esc(r.summary) + '</p>' +
       '</div>';
@@ -115,8 +118,8 @@
       '<h2>이런 모습이 있어요</h2>' +
       '<ul>' + r.traits.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
       '<div class="match">' +
-      '<div><small>잘 맞는 친구</small><strong>' + esc(best.character) + '</strong><br><a href="./?type=' + r.best + '">' + r.best + ' 결과 보기</a></div>' +
-      '<div><small>조금 다른 친구</small><strong>' + esc(worst.character) + '</strong><br><a href="./?type=' + r.worst + '">' + r.worst + ' 결과 보기</a></div>' +
+      '<div><small>' + esc(D.bestLabel || '잘 맞는 친구') + '</small><strong>' + esc(best.character) + '</strong><br><a href="./?type=' + r.best + '">' + r.best + ' 결과 보기</a></div>' +
+      '<div><small>' + esc(D.worstLabel || '조금 다른 친구') + '</small><strong>' + esc(worst.character) + '</strong><br><a href="./?type=' + r.worst + '">' + r.worst + ' 결과 보기</a></div>' +
       '</div></div>' +
       '<div class="btn-row">' +
       '<button class="btn" id="share">결과 공유하기</button>' +
@@ -129,4 +132,5 @@
   }
 
   window.MbtiTest = { mountQuiz: mountQuiz, mountResult: mountResult, compute: compute };
+  window.TestEngine = { mountTest: mountQuiz, mountResult: mountResult };
 })();

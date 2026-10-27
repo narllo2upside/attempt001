@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>말랑테스트 | 무료 성격 테스트·MBTI·오늘의 타로</title>
-<meta name="description" content="회원가입 없이 바로 결과를 보는 무료 심리 테스트 모음. 캐릭터 MBTI 테스트와 오늘의 타로를 즐겨보세요.">
+<title>말랑테스트 | 무료 심리 테스트 모음 - 성격·연애·MBTI·운세</title>
+<meta name="description" content="회원가입 없이 바로 결과를 보는 무료 심리 테스트 모음. 성격, 연애, MBTI, 운세, 능력 테스트를 즐겨 보세요.">
 <link rel="canonical" href="https://YOUR-DOMAIN.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="말랑테스트 | 무료 성격 테스트·오늘의 타로">
+<meta property="og:title" content="말랑테스트 | 무료 심리 테스트 모음">
 <meta property="og:description" content="회원가입 없이 바로 결과를 보는 무료 심리 테스트 모음.">
 <meta property="og:image" content="https://YOUR-DOMAIN.com/og-home.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -22,19 +22,23 @@
 <body>
 <div id="site-header"></div>
 
-<main id="main-content" class="wrap">
-  <section class="hero">
-    <h1>심심할 때 하나씩,<br>말랑한 테스트</h1>
-    <p>회원가입 없이 바로 결과를 볼 수 있어요.</p>
+<main id="main-content" class="wrap wrap--wide">
+  <section class="home-hero">
+    <h1>심심할 때 하나씩, 말랑한 테스트</h1>
+    <p>성격, 연애, MBTI, 운세까지. 회원가입 없이 바로 결과를 볼 수 있어요.</p>
+    <form class="search" role="search" id="search-form">
+      <input type="search" id="search" placeholder="테스트 이름으로 찾기" aria-label="테스트 검색" autocomplete="off">
+    </form>
   </section>
 
   <nav class="chips" id="cat-chips" aria-label="카테고리"></nav>
 
   <div data-ad="home_top"></div>
 
-  <section>
-    <h2 class="section-title" id="list-title">전체 테스트</h2>
-    <div class="card-grid" id="test-grid"></div>
+  <section id="tests">
+    <h2 class="section-title" id="list-title">심리 테스트 목록</h2>
+    <div class="card-grid card-grid--home" id="test-grid"></div>
+    <nav class="pager" id="pager" aria-label="페이지"></nav>
   </section>
 
   <div data-ad="home_bottom"></div>
@@ -46,20 +50,49 @@
 <script src="assets/js/common.js"></script>
 <script>
   (function () {
-    var cats = window.SITE_CONFIG.categories;
-    var cur = new URLSearchParams(location.search).get('cat') || 'all';
+    var C = window.SITE_CONFIG;
+    var cats = C.categories;
+    var cur = Site.param('cat') || 'all';
     if (!cats.some(function (c) { return c.key === cur; })) cur = 'all';
+    var page = Math.max(1, parseInt(Site.param('page'), 10) || 1);
+    var grid = document.getElementById('test-grid');
 
-    // 카테고리 칩은 <a> 링크 → 누를 때마다 실제 페이지 이동(비네트 광고 기회)
-    document.getElementById('cat-chips').innerHTML = cats.map(function (c) {
-      var href = c.key === 'all' ? Site.url('') : Site.url('?cat=' + c.key);
-      return '<a class="chip" href="' + href + '"' + (c.key === cur ? ' aria-current="page"' : '') + '>' + Site.esc(c.label) + '</a>';
-    }).join('');
+    function href(cat, p) {
+      var q = [];
+      if (cat !== 'all') q.push('cat=' + cat);
+      if (p > 1) q.push('page=' + p);
+      return Site.url(q.length ? '?' + q.join('&') : '') + '#tests';
+    }
 
-    var label = cats.filter(function (c) { return c.key === cur; })[0].label;
-    document.getElementById('list-title').textContent = cur === 'all' ? '전체 테스트' : label + ' 테스트';
+    // 카테고리 칩과 페이지 번호는 모두 실제 링크 → 누를 때마다 페이지 이동(비네트 광고 기회)
+    Site.loadTests().then(function (list) {
+      document.getElementById('cat-chips').innerHTML = cats.map(function (c) {
+        var n = c.key === 'all' ? list.length : list.filter(function (t) { return t.category === c.key; }).length;
+        return '<a class="chip" href="' + href(c.key, 1) + '"' + (c.key === cur ? ' aria-current="page"' : '') + '>' +
+          Site.esc(c.label) + ' <small>' + n + '</small></a>';
+      }).join('');
+    });
 
-    Site.renderGrid(document.getElementById('test-grid'), { category: cur, infeedAfter: 6, infeedSlot: 'home_infeed' });
+    document.getElementById('list-title').textContent = cur === 'all' ? '심리 테스트 목록' : Site.catLabel(cur) + ' 테스트';
+
+    function render(query) {
+      return Site.renderGrid(grid, {
+        category: cur, query: query, page: page,
+        pageSize: query ? 0 : C.pageSize, infeedEvery: C.infeedEvery, infeedSlot: 'home_infeed'
+      }).then(function (info) {
+        Site.pagination(document.getElementById('pager'), page, query ? 1 : info.pages, function (p) { return href(cur, p); });
+      });
+    }
+    render('');
+
+    // 검색은 목록만 다시 그림 (페이지 이동 없음)
+    var t;
+    document.getElementById('search').addEventListener('input', function (e) {
+      clearTimeout(t);
+      var v = e.target.value;
+      t = setTimeout(function () { render(v); }, 150);
+    });
+    document.getElementById('search-form').addEventListener('submit', function (e) { e.preventDefault(); });
   })();
 </script>
 </body>

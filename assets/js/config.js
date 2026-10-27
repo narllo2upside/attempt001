@@ -16,9 +16,16 @@ window.SITE_CONFIG = {
   // 홈 상단 카테고리 칩 (key는 data/tests.json의 category와 일치)
   categories: [
     { key: 'all', label: '전체' },
-    { key: 'mbti', label: '성격·MBTI' },
-    { key: 'fortune', label: '운세·타로' }
+    { key: 'personality', label: '성격' },
+    { key: 'love', label: '연애' },
+    { key: 'mbti', label: 'MBTI' },
+    { key: 'fortune', label: '운세' },
+    { key: 'ability', label: '능력' }
   ],
+
+  // 홈 목록 한 페이지에 보일 테스트 수, 피드 광고 간격
+  pageSize: 20,
+  infeedEvery: 10,
 
   adsense: {
     // AdSense 승인 전에는 false → 광고 자리가 점선 박스로 보입니다.
@@ -37,7 +44,8 @@ window.SITE_CONFIG = {
       test_bottom: '',
       result_top: '',
       result_mid: '',
-      result_bottom: ''
+      result_bottom: '',
+      side: ''          // 우측 사이드바 세로형(300x600 권장), 데스크톱에서만
     }
   }
 };

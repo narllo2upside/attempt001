@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>오늘의 타로 결과 | 말랑테스트</title>
-<meta name="description" content="오늘 뽑은 타로 카드의 연애, 일·공부 해석과 행운의 색을 확인하세요.">
+<meta name="description" content="오늘 하루를 떠올리며 카드 한 장을 고르면 연애, 일·공부, 오늘의 한마디와 행운의 색을 알려드려요. 카드는 매일 새로 섞여요.">
 <meta name="robots" content="noindex, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="오늘의 타로 카드는? | 말랑테스트">
-<meta property="og:description" content="카드 한 장으로 보는 오늘 하루의 흐름.">
+<meta property="og:title" content="오늘의 타로 | 말랑테스트">
+<meta property="og:description" content="오늘 하루를 떠올리며 카드 한 장을 고르면 연애, 일·공부, 오늘의 한마디와 행운의 색을 알려드려요. 카드는 매일 새로 섞여요.">
 <meta property="og:image" content="https://YOUR-DOMAIN.com/test/today-tarot/thumb.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +18,10 @@
 <script src="../../../assets/js/config.js"></script>
 </head>
 <body class="theme-night">
+<!-- 자동 생성 파일입니다. test/today-tarot/page.json 을 고친 뒤 tools/build.py 를 실행하세요. -->
 <div id="site-header"></div>
-
-<main id="main-content" class="wrap">
+<div class="layout">
+<main id="main-content" class="layout__main">
   <p class="crumb"><a href="../../../">홈</a> / <a href="../">오늘의 타로</a> / 결과</p>
 
   <div data-ad="result_top"></div>
@@ -37,15 +38,25 @@
   <div data-ad="result_bottom"></div>
 </main>
 
+<aside class="layout__side" aria-label="인기 테스트">
+  <section class="popular">
+    <h2>인기 테스트</h2>
+    <ol id="popular"></ol>
+  </section>
+  <div class="side-ad" data-ad="side" data-ad-media="desktop"></div>
+</aside>
+</div>
+
 <div id="site-footer"></div>
 
 <script src="../../../assets/js/ads.js"></script>
 <script src="../../../assets/js/common.js"></script>
-<script src="../../../test/today-tarot/data.js"></script>
+<script src="../data.js"></script>
 <script src="../../../assets/js/tarot-engine.js"></script>
 <script>
-  Tarot.mountResult();
-  Site.renderRelated(TAROT_DATA.slug);
+  TestEngine.mountResult();
+  Site.renderRelated('today-tarot');
+  Site.renderPopular('today-tarot');
 </script>
 </body>
 </html>

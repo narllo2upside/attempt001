@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>치이카와 MBTI 테스트 결과 | 말랑테스트</title>
-<meta name="description" content="나와 닮은 치이카와 친구는 누구일까요? 결과를 확인하고 친구와 비교해 보세요.">
+<meta name="description" content="12개의 A/B 질문으로 16가지 성향 중 나와 닮은 치이카와 친구를 찾아보는 재미용 테스트예요.">
 <meta name="robots" content="noindex, follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="나와 닮은 치이카와 친구는? | 말랑테스트">
-<meta property="og:description" content="12개 질문으로 나와 닮은 치이카와 친구를 찾아요.">
+<meta property="og:title" content="치이카와 MBTI 테스트 | 말랑테스트">
+<meta property="og:description" content="12개의 A/B 질문으로 16가지 성향 중 나와 닮은 치이카와 친구를 찾아보는 재미용 테스트예요.">
 <meta property="og:image" content="https://YOUR-DOMAIN.com/test/chiikawa-mbti/thumb.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +18,10 @@
 <script src="../../../assets/js/config.js"></script>
 </head>
 <body>
+<!-- 자동 생성 파일입니다. test/chiikawa-mbti/page.json 을 고친 뒤 tools/build.py 를 실행하세요. -->
 <div id="site-header"></div>
-
-<main id="main-content" class="wrap">
+<div class="layout">
+<main id="main-content" class="layout__main">
   <p class="crumb"><a href="../../../">홈</a> / <a href="../">치이카와 MBTI 테스트</a> / 결과</p>
 
   <div data-ad="result_top"></div>
@@ -37,15 +38,25 @@
   <div data-ad="result_bottom"></div>
 </main>
 
+<aside class="layout__side" aria-label="인기 테스트">
+  <section class="popular">
+    <h2>인기 테스트</h2>
+    <ol id="popular"></ol>
+  </section>
+  <div class="side-ad" data-ad="side" data-ad-media="desktop"></div>
+</aside>
+</div>
+
 <div id="site-footer"></div>
 
 <script src="../../../assets/js/ads.js"></script>
 <script src="../../../assets/js/common.js"></script>
-<script src="../../../test/chiikawa-mbti/data.js"></script>
+<script src="../data.js"></script>
 <script src="../../../assets/js/mbti-engine.js"></script>
 <script>
-  MbtiTest.mountResult();
-  Site.renderRelated(TEST_DATA.slug);
+  TestEngine.mountResult();
+  Site.renderRelated('chiikawa-mbti');
+  Site.renderPopular('chiikawa-mbti');
 </script>
 </body>
 </html>

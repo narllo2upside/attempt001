@@ -44,9 +44,11 @@
   function mountDraw() {
     var day = window.Site.ymd();
     var ids = todaysCards(day);
+    var app = document.getElementById('app');
+    app.innerHTML = '<div class="tarot-intro"><p class="tarot-date">' + fmt(day) + '</p></div>' +
+      '<div class="tarot-spread" id="spread"></div><div class="tarot-cta" id="tarot-cta"></div>';
     var spread = document.getElementById('spread');
     var cta = document.getElementById('tarot-cta');
-    document.getElementById('tarot-date').textContent = fmt(day);
 
     spread.innerHTML = ids.map(function (id, i) {
       var c = T.cards[id];
@@ -133,4 +135,5 @@
   }
 
   window.Tarot = { mountDraw: mountDraw, mountResult: mountResult, todaysCards: todaysCards };
+  window.TestEngine = { mountTest: mountDraw, mountResult: mountResult };
 })();

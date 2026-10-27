@@ -22,5 +22,173 @@
     "meta": "카드 1장, 30초",
     "isNew": true,
     "rank": 2
+  },
+  {
+    "slug": "inner-child",
+    "title": "내면 아이 테스트",
+    "desc": "10개 질문으로 내 마음속에 살고 있는 아이를 만나 봐요.",
+    "category": "personality",
+    "emoji": "🧸",
+    "tint": "#FFE3C2",
+    "thumb": "test/inner-child/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 3
+  },
+  {
+    "slug": "philosopher-test",
+    "title": "철학자 성향 테스트",
+    "desc": "10개 질문으로 내 생각 습관과 닮은 철학자를 찾아요.",
+    "category": "personality",
+    "emoji": "🏛️",
+    "tint": "#E4E9F2",
+    "thumb": "test/philosopher-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 4
+  },
+  {
+    "slug": "mental-age-test",
+    "title": "정신연령 테스트",
+    "desc": "10개 질문으로 알아보는 내 마음의 나이.",
+    "category": "personality",
+    "emoji": "🎂",
+    "tint": "#FFF1B8",
+    "thumb": "test/mental-age-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 5
+  },
+  {
+    "slug": "defense-test",
+    "title": "방어기제 테스트",
+    "desc": "힘들 때 나도 모르게 꺼내 드는 마음의 방패는?",
+    "category": "personality",
+    "emoji": "🛡️",
+    "tint": "#D6ECFF",
+    "thumb": "test/defense-test/thumb.png",
+    "meta": "12문항, 약 3분",
+    "rank": 6
+  },
+  {
+    "slug": "love-hormone-test",
+    "title": "연애 호르몬 테스트",
+    "desc": "설렘, 스킨십, 안정감, 짜릿함 중 나를 움직이는 건?",
+    "category": "love",
+    "emoji": "💘",
+    "tint": "#FFD1DC",
+    "thumb": "test/love-hormone-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 7
+  },
+  {
+    "slug": "rebirth-test",
+    "title": "다시 태어난다면 테스트",
+    "desc": "다시 태어난다면 나는 어떤 모습으로 살게 될까?",
+    "category": "personality",
+    "emoji": "🌈",
+    "tint": "#D2F1E4",
+    "thumb": "test/rebirth-test/thumb.png",
+    "meta": "9문항, 약 2분",
+    "rank": 8
+  },
+  {
+    "slug": "mbti-test",
+    "title": "무료 MBTI 검사",
+    "desc": "20문항으로 보는 나의 16가지 성격 유형.",
+    "category": "mbti",
+    "emoji": "🧩",
+    "tint": "#E2DBFF",
+    "thumb": "test/mbti-test/thumb.png",
+    "meta": "20문항, 약 3분",
+    "rank": 9
+  },
+  {
+    "slug": "enneagram-test",
+    "title": "에니어그램 테스트",
+    "desc": "12문항으로 알아보는 나의 에니어그램 유형.",
+    "category": "personality",
+    "emoji": "⭐",
+    "tint": "#FFE9A8",
+    "thumb": "test/enneagram-test/thumb.png",
+    "meta": "12문항, 약 3분",
+    "rank": 10
+  },
+  {
+    "slug": "attachment-test",
+    "title": "애착유형 테스트",
+    "desc": "나는 연애할 때 안정형일까, 불안형일까?",
+    "category": "love",
+    "emoji": "🫶",
+    "tint": "#FFDCCF",
+    "thumb": "test/attachment-test/thumb.png",
+    "meta": "12문항, 약 3분",
+    "rank": 11
+  },
+  {
+    "slug": "disc-test",
+    "title": "DISC 행동유형 테스트",
+    "desc": "주도형, 사교형, 안정형, 신중형 중 나의 행동 스타일은?",
+    "category": "personality",
+    "emoji": "🧭",
+    "tint": "#CDEBFF",
+    "thumb": "test/disc-test/thumb.png",
+    "meta": "12문항, 약 3분",
+    "rank": 12
+  },
+  {
+    "slug": "animal-face-test",
+    "title": "이상형 동물상 테스트",
+    "desc": "10번의 선택으로 알아보는 나의 이상형 동물상.",
+    "category": "love",
+    "emoji": "🦊",
+    "tint": "#FFE0C7",
+    "thumb": "test/animal-face-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "isNew": true,
+    "rank": 13
+  },
+  {
+    "slug": "namsachin-test",
+    "title": "남사친·여사친 테스트",
+    "desc": "내 남사친·여사친, 진짜 친구일까 연애로 갈까?",
+    "category": "love",
+    "emoji": "👫",
+    "tint": "#E9DCFF",
+    "thumb": "test/namsachin-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 14
+  },
+  {
+    "slug": "lucky-test",
+    "title": "행운아 테스트",
+    "desc": "10가지 일상 선택으로 보는 나의 행운 지수.",
+    "category": "fortune",
+    "emoji": "🍀",
+    "tint": "#D4F5C8",
+    "thumb": "test/lucky-test/thumb.png",
+    "meta": "10문항, 약 2분",
+    "rank": 15
+  },
+  {
+    "slug": "reflex-test",
+    "title": "반사신경 테스트",
+    "desc": "초록색이 되는 순간 탭! 내 반사신경은 어떤 동물급일까?",
+    "category": "ability",
+    "emoji": "⚡",
+    "tint": "#FFF3A6",
+    "thumb": "test/reflex-test/thumb.png",
+    "meta": "5회 측정, 1분",
+    "isNew": true,
+    "rank": 16
+  },
+  {
+    "slug": "book-of-answers",
+    "title": "책님에게 물어봐",
+    "desc": "질문을 떠올리고 책장을 펼치면 지금 필요한 한 문장을 알려 줘요.",
+    "category": "fortune",
+    "emoji": "📖",
+    "tint": "#F3E2C7",
+    "thumb": "test/book-of-answers/thumb.png",
+    "meta": "질문 1개, 30초",
+    "isNew": true,
+    "rank": 17
   }
 ]

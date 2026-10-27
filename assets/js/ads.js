@@ -25,6 +25,10 @@
     el.setAttribute('data-ad-done', '1');
     var name = el.getAttribute('data-ad');
     var slotId = cfg.slots[name];
+
+    // data-ad-media="desktop": 사이드바처럼 넓은 화면에서만 보이는 자리.
+    // 모바일에서 display:none으로 숨긴 광고는 정책상 문제가 될 수 있어 요소 자체를 지웁니다.
+    if (el.getAttribute('data-ad-media') === 'desktop' && window.innerWidth < 1024) { el.remove(); return; }
     el.innerHTML = '';
 
     if (cfg.enabled && !slotId) { el.remove(); return; }

@@ -119,3 +119,5 @@ window.TAROT_DATA = {
       advice: '끝낸 일 목록을 적어 보면 뿌듯할 거예요.', lucky: '에메랄드', color: '#2E9E6B' }
   ]
 };
+
+window.TEST_DATA = window.TAROT_DATA;
