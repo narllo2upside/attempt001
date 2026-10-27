@@ -29,8 +29,10 @@ ENGINES = {
 CARD_FIELDS = ["slug", "title", "desc", "category", "emoji", "tint", "thumb", "meta", "isNew", "rank"]
 REQUIRED = ["slug", "title", "desc", "category", "engine", "headline", "description"]
 
-FONTS_BASE = "family=Gowun+Dodum&family=Jua"
-FONTS_SERIF = "family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Jua"
+# Geist(영문·숫자) + Pretendard(한글). 타로·답의 책은 카드 문구용 명조(Gowun Batang) 추가
+FONTS_BASE = "family=Geist:wght@400..800"
+FONTS_SERIF = "family=Geist:wght@400..800&family=Gowun+Batang:wght@400;700"
+PRETENDARD = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
 
 
 def e(s):
@@ -50,6 +52,7 @@ HEAD = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
 <title>{title}</title>
 <meta name="description" content="{description}">
 {extra_meta}<meta property="og:type" content="website">
@@ -60,6 +63,7 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?{fonts}&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{pretendard}">
 <link rel="stylesheet" href="{p}assets/css/style.css">
 <script src="{p}assets/js/config.js"></script>
 </head>
@@ -151,7 +155,7 @@ def build_page(meta, cats, site_name, site_url):
     slug = meta["slug"]
     fonts = FONTS_SERIF if meta.get("serif") or meta.get("theme") == "night" else FONTS_BASE
     body_class = ' class="theme-night"' if meta.get("theme") == "night" else ""
-    common = dict(slug=slug, site_url=site_url, fonts=fonts, body_class=body_class,
+    common = dict(slug=slug, site_url=site_url, fonts=fonts, body_class=body_class, pretendard=PRETENDARD,
                   engine_js=ENGINES[meta["engine"]], description=e(meta["description"]))
 
     sections = "\n".join(

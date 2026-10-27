@@ -20,16 +20,22 @@
     return c ? c.label : key;
   }
 
+  var SEARCH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+
   function header() {
     var el = document.getElementById('site-header');
     if (!el) return;
+    var cur = new URLSearchParams(location.search).get('cat');
     var nav = C.categories.filter(function (c) { return c.key !== 'all'; })
-      .map(function (c) { return '<a href="' + url('?cat=' + c.key) + '">' + esc(c.label) + '</a>'; }).join('');
+      .map(function (c) {
+        return '<a href="' + url('?cat=' + c.key) + '"' + (cur === c.key ? ' aria-current="page"' : '') + '>' + esc(c.label) + '</a>';
+      }).join('');
     el.innerHTML =
       '<a class="skip" href="#main-content">본문 바로가기</a>' +
       '<header class="site-header"><div class="site-header__in">' +
-      '<a class="logo" href="' + url('') + '">' + esc(C.siteName) + '</a>' +
+      '<a class="logo" href="' + url('') + '"><span class="logo__mark" aria-hidden="true"></span>' + esc(C.siteName) + '</a>' +
       '<nav class="site-nav" aria-label="카테고리">' + nav + '</nav>' +
+      '<a class="icon-btn" href="' + url('#search') + '" aria-label="테스트 검색">' + SEARCH_ICON + '</a>' +
       '</div></header>';
   }
 
@@ -190,7 +196,7 @@
   });
 
   window.Site = {
-    esc: esc, url: url, catLabel: catLabel, loadTests: loadTests, renderGrid: renderGrid,
+    esc: esc, url: url, catLabel: catLabel, cardHTML: cardHTML, thumbHTML: thumbHTML, SEARCH_ICON: SEARCH_ICON, loadTests: loadTests, renderGrid: renderGrid,
     renderRelated: renderRelated, renderPopular: renderPopular, pagination: pagination,
     share: share, toast: toast, ymd: ymd, param: param
   };

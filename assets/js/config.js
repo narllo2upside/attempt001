@@ -23,6 +23,22 @@ window.SITE_CONFIG = {
     { key: 'ability', label: '능력' }
   ],
 
+  // 홈 상단 배너 슬라이드 (slug 순서대로, copy는 배너 문구 — 비우면 테스트 설명 사용)
+  featured: [
+    { slug: 'today-tarot', copy: '카드 한 장으로 여는 오늘 하루. 연애, 일, 행운의 색까지.' },
+    { slug: 'chiikawa-mbti', copy: '12개의 질문으로 나와 꼭 닮은 친구를 찾아보세요.' },
+    { slug: 'attachment-test', copy: '답장이 늦을 때 나는? 연애할 때의 내 마음 습관.' },
+    { slug: 'inner-child', copy: '어른이 된 지금도 마음속에 살고 있는 아이를 만나요.' },
+    { slug: 'reflex-test', copy: '초록색이 되는 순간 탭! 내 반응 속도는 몇 ms?' }
+  ],
+
+  // 홈 큐레이션 줄 — category로 묶거나 slugs로 직접 고르기
+  shelves: [
+    { title: '💞 나의 연애 유형', category: 'love' },
+    { title: '🧠 자아 탐구 중', category: 'personality' },
+    { title: '🔮 오늘은 뭔가 궁금해', slugs: ['today-tarot', 'book-of-answers', 'lucky-test', 'reflex-test'] }
+  ],
+
   // 홈 목록 한 페이지에 보일 테스트 수, 피드 광고 간격
   pageSize: 20,
   infeedEvery: 10,
